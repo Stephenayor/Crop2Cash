@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/USER-PC/Crop2Cash/app/src/main/res/layout/activity_main.xml" value="0.144" />
+        <entry key="..\:/Users/USER-PC/Crop2Cash/app/src/main/res/layout/child_recycler.xml" value="0.2546875" />
         <entry key="..\:/Users/USER-PC/Crop2Cash/app/src/main/res/layout/fragment_exhibits.xml" value="0.12386018237082067" />
+        <entry key="..\:/Users/USER-PC/Crop2Cash/app/src/main/res/layout/parent_recycler.xml" value="0.2546875" />
       </map>
     </option>
   </component>
