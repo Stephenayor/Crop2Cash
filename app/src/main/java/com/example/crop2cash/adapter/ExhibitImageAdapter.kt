@@ -1,5 +1,6 @@
 package com.example.crop2cash.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.crop2cash.R
 import com.example.crop2cash.model.Exhibit
 
-class ExhibitImageAdapter(private val exhibitList: List<Exhibit>) :
+class ExhibitImageAdapter(private val exhibitImageList: List<String>) :
     RecyclerView.Adapter<ExhibitImageAdapter.ExhibitsImageViewHolder>(){
 //    var exhibitsList: List<Exhibit?> = listOf<Exhibit>()
 //        set(value) {
@@ -26,14 +27,16 @@ class ExhibitImageAdapter(private val exhibitList: List<Exhibit>) :
     }
 
     override fun onBindViewHolder(holder: ExhibitsImageViewHolder, position: Int) {
-        val exhibit = exhibitList[position]
+        val exhibit = exhibitImageList[position]
+        Log.d("Images", exhibit.get(0).toString())
         Glide.with(holder.exhibitImages.context)
-            .load(exhibit?.images)
+            .load(exhibit)
+            .override(300 , 200)
             .into(holder.exhibitImages)
     }
 
     override fun getItemCount(): Int {
-        return exhibitList.size
+        return exhibitImageList.size
     }
 
     class ExhibitsImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

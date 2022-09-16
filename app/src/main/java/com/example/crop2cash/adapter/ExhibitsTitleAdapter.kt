@@ -3,6 +3,7 @@ package com.example.crop2cash.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,11 +30,15 @@ class ExhibitsTitleAdapter :
     override fun onBindViewHolder(holder: ExhibitsTitleViewHolder, position: Int) {
         val exhibit = exhibitsList[position]
         holder.exhibitTitle.text = exhibit?.title
-        val childLayoutManager = LinearLayoutManager(holder.exhibitsImageRecylerView.context,
-            RecyclerView.HORIZONTAL, false)
-        childLayoutManager.initialPrefetchItemCount = 4
+        val childLayoutManager =
+            LinearLayoutManager(
+                holder.exhibitsImageRecylerView.context,
+                RecyclerView.HORIZONTAL,
+                false
+            )
+        childLayoutManager.initialPrefetchItemCount = 3
         holder.exhibitsImageRecylerView.layoutManager = childLayoutManager
-        holder.exhibitsImageRecylerView.adapter = ExhibitImageAdapter(exhibitsList)
+        holder.exhibitsImageRecylerView.adapter = ExhibitImageAdapter(exhibitsList[position].images)
         holder.exhibitsImageRecylerView.setRecycledViewPool(viewPool)
     }
 
@@ -44,7 +49,8 @@ class ExhibitsTitleAdapter :
 
     class ExhibitsTitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val exhibitTitle = itemView.findViewById<TextView>(R.id.exhibits_title)!!
-        val exhibitsImageRecylerView: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rv_exhibit_images)
+        val exhibitsImageRecylerView: RecyclerView =
+            itemView.findViewById<RecyclerView>(R.id.rv_exhibit_images)
     }
 
 }
