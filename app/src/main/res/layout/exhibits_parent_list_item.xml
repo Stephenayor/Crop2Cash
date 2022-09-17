@@ -8,7 +8,8 @@
     card_view:cardBackgroundColor="#fff"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
-    card_view:cardUseCompatPadding="true">
+
+    android:backgroundTint="@color/design_default_color_on_secondary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,12 +19,13 @@
         <TextView
             android:id="@+id/exhibits_title"
             style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:padding="20dp"
             android:text="Hello World"
-            android:textColor="@color/design_default_color_on_secondary"
+            android:textColor="@color/design_default_color_error"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

@@ -1,22 +1,20 @@
 package com.example.crop2cash.adapter
 
-import android.util.Log
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.example.crop2cash.R
-import com.example.crop2cash.model.Exhibit
 
 class ExhibitImageAdapter(private val exhibitImageList: List<String>) :
     RecyclerView.Adapter<ExhibitImageAdapter.ExhibitsImageViewHolder>(){
-//    var exhibitsList: List<Exhibit?> = listOf<Exhibit>()
-//        set(value) {
-//            field = value
-//            notifyDataSetChanged()
-//        }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExhibitsImageViewHolder {
@@ -27,11 +25,11 @@ class ExhibitImageAdapter(private val exhibitImageList: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ExhibitsImageViewHolder, position: Int) {
-        val exhibit = exhibitImageList[position]
-        Log.d("Images", exhibit.get(0).toString())
+        val exhibitImage = exhibitImageList[position]
         Glide.with(holder.exhibitImages.context)
-            .load(exhibit)
-            .override(300 , 200)
+            .load(exhibitImage)
+            .error(R.drawable.error_image)
+            .placeholder(R.drawable.error_image)
             .into(holder.exhibitImages)
     }
 

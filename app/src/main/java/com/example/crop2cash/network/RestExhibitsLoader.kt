@@ -34,8 +34,7 @@ class RestExhibitsLoader {
             val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
             val okHTTP: OkHttpClient.Builder = OkHttpClient.Builder().addInterceptor(logger)
             val interceptor = Interceptor { chain ->
-                val API_KEY = "e39dd47477f4bd2ccf8277df82b9f616&language=en-US&page=1"
-                val url = chain.request().url.newBuilder().addQueryParameter("apiKey", API_KEY).build()
+                val url = chain.request().url.newBuilder().build()
                 val request = chain.request()
                     .newBuilder()
                     .url(url)

@@ -1,4 +1,4 @@
-package com.example.crop2cash
+package com.example.crop2cash.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -38,6 +38,7 @@ class ExhibitsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.progressBar.visibility = View.VISIBLE
         exhibitsViewModel = exhibitsComponent.getExhibitsViewModel()
         getExhibitsList()
     }
@@ -50,6 +51,7 @@ class ExhibitsFragment : BaseFragment() {
     }
 
     private fun displayExhibitsList(exhibitList: List<Exhibit>) {
+        binding.progressBar.visibility = View.INVISIBLE
         val exhibitsTitleAdapter = ExhibitsTitleAdapter()
         exhibitsTitleAdapter.exhibitsList = exhibitList
         binding.rvParent.adapter = exhibitsTitleAdapter
