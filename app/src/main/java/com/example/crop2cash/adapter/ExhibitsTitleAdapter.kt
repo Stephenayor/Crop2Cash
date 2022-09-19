@@ -3,7 +3,6 @@ package com.example.crop2cash.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,14 +31,14 @@ class ExhibitsTitleAdapter :
         holder.exhibitTitle.text = exhibit?.title
         val childLayoutManager =
             LinearLayoutManager(
-                holder.exhibitsImageRecylerView.context,
+                holder.exhibitsImageRecyclerView.context,
                 RecyclerView.HORIZONTAL,
                 false
             )
         childLayoutManager.initialPrefetchItemCount = 3
-        holder.exhibitsImageRecylerView.layoutManager = childLayoutManager
-        holder.exhibitsImageRecylerView.adapter = ExhibitImageAdapter(exhibitsList[position].images)
-        holder.exhibitsImageRecylerView.setRecycledViewPool(viewPool)
+        holder.exhibitsImageRecyclerView.layoutManager = childLayoutManager
+        holder.exhibitsImageRecyclerView.adapter = ExhibitImageAdapter(exhibitsList[position].images)
+        holder.exhibitsImageRecyclerView.setRecycledViewPool(viewPool)
     }
 
     override fun getItemCount(): Int {
@@ -49,7 +48,7 @@ class ExhibitsTitleAdapter :
 
     class ExhibitsTitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val exhibitTitle = itemView.findViewById<TextView>(R.id.exhibits_title)!!
-        val exhibitsImageRecylerView: RecyclerView =
+        val exhibitsImageRecyclerView: RecyclerView =
             itemView.findViewById<RecyclerView>(R.id.rv_exhibit_images)
     }
 

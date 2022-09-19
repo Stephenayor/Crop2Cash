@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 class ExhibitsFragment : BaseFragment() {
     private lateinit var binding: FragmentExhibitsBinding
-
     @Inject
     lateinit var exhibitsViewModel: ExhibitsViewmodel
 
@@ -66,7 +65,8 @@ class ExhibitsFragment : BaseFragment() {
     }
 
     private fun showConnectionTimeoutErrorMessage() {
-        exhibitsViewModel.getSlowNetworkErrorMessage().observe(viewLifecycleOwner, Observer {
+        binding.progressBar.visibility = View.GONE
+        exhibitsViewModel.getNetworkErrorMessage().observe(viewLifecycleOwner, Observer {
             showToast("Please Check your Internet Connection")
         })
     }

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:padding="20dp"
-            android:text="Hello World"
+            tools:text="Exhibit Title"
             android:textColor="@color/design_default_color_error"
             android:textStyle="bold" />
 

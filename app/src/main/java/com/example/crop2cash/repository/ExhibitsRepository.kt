@@ -39,7 +39,7 @@ class ExhibitsRepository @Inject constructor() : BaseFragment() {
         return mutableLiveData
     }
 
-    fun getSlowNetworkErrorMessage(): MutableLiveData<Boolean> {
+    fun getNetworkErrorMessage(): MutableLiveData<Boolean> {
         return slowNetworkIssues
     }
 }
