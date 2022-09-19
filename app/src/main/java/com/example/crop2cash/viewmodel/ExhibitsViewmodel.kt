@@ -17,4 +17,8 @@ class ExhibitsViewmodel @Inject constructor() : BaseViewModel() {
     fun getExhibitsList(): LiveData<List<Exhibit>?>? {
         return exhibitsRepository.getExhibitsList()
     }
+
+    fun getSlowNetworkErrorMessage(): LiveData<Boolean>{
+        return exhibitsRepository.getSlowNetworkErrorMessage()
+    }
 }

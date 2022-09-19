@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
   <androidx.appcompat.widget.Toolbar
-      android:id="@+id/my_toolbar"
+      android:id="@+id/exhibits_toolbar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       android:background="?attr/colorPrimary"
@@ -16,17 +16,18 @@
       app:layout_constraintTop_toTopOf="parent"
       android:backgroundTint="@color/design_default_color_on_secondary"
       app:title="EXHIBITS"
-      app:titleTextColor="@color/design_default_color_error"
-      app:titleMarginStart="10dp"
+      app:liftOnScroll="true"
+      app:titleTextColor="@color/design_default_color_on_primary"
+      app:titleMarginStart="20dp"
+      app:elevation="4dp"
       />
 
 
   <androidx.fragment.app.FragmentContainerView
       android:id="@+id/fragment_container_view_tag"
-      android:layout_marginTop="5dp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintTop_toBottomOf="@id/my_toolbar"
+      app:layout_constraintTop_toBottomOf="@id/exhibits_toolbar"
       android:name="com.example.crop2cash.view.ExhibitsFragment"/>
 
 

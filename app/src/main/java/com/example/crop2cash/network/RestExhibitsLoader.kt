@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -33,6 +34,7 @@ class RestExhibitsLoader {
         fun provideInterceptor(): OkHttpClient.Builder {
             val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
             val okHTTP: OkHttpClient.Builder = OkHttpClient.Builder().addInterceptor(logger)
+                .connectTimeout(10, TimeUnit.SECONDS)
             val interceptor = Interceptor { chain ->
                 val url = chain.request().url.newBuilder().build()
                 val request = chain.request()

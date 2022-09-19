@@ -1,6 +1,7 @@
 package com.example.crop2cash.view
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class ExhibitsFragment : BaseFragment() {
             Toast.makeText(activity, "SUCCESS", Toast.LENGTH_LONG).show()
             displayExhibitsList(it!!)
         })
+        showConnectionTimeoutErrorMessage()
     }
 
     private fun displayExhibitsList(exhibitList: List<Exhibit>) {
@@ -61,5 +63,17 @@ class ExhibitsFragment : BaseFragment() {
                 LinearLayoutManager.VERTICAL
             )
         )
+    }
+
+    private fun showConnectionTimeoutErrorMessage() {
+        exhibitsViewModel.getSlowNetworkErrorMessage().observe(viewLifecycleOwner, Observer {
+            showToast("Please Check your Internet Connection")
+        })
+    }
+
+    private fun showToast(message: String) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
     }
 }

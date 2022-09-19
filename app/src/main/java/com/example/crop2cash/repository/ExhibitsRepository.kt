@@ -1,7 +1,5 @@
 package com.example.crop2cash.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.crop2cash.base.BaseFragment
 import com.example.crop2cash.model.Exhibit
@@ -9,9 +7,11 @@ import com.example.crop2cash.model.ExhibitsLoader
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class ExhibitsRepository @Inject constructor() : BaseFragment() {
+    private var slowNetworkIssues = MutableLiveData<Boolean>()
 
     fun getExhibitsList(): MutableLiveData<List<Exhibit>?>? {
         val mutableLiveData: MutableLiveData<List<Exhibit>?> = MutableLiveData<List<Exhibit>?>()
@@ -25,14 +25,21 @@ class ExhibitsRepository @Inject constructor() : BaseFragment() {
                 response: Response<List<Exhibit>?>
             ) {
                 mutableLiveData.value = response.body()
-                Log.d("EXHIBITS", response.code().toString())
             }
 
             override fun onFailure(call: Call<List<Exhibit>?>, t: Throwable) {
                 t.message
+
+                if (t is UnknownHostException) {
+                    slowNetworkIssues.value = true
+                }
             }
         })
 
         return mutableLiveData
+    }
+
+    fun getSlowNetworkErrorMessage(): MutableLiveData<Boolean> {
+        return slowNetworkIssues
     }
 }
